@@ -1,0 +1,31 @@
+diff --git a/main/lib/deviceInfo.js b/main/lib/deviceInfo.js
+index 9cc63b8..d68fc7f 100644
+--- a/main/lib/deviceInfo.js
++++ b/main/lib/deviceInfo.js
+@@ -58,12 +58,12 @@ const getStorage = async () => {
+ };
+ const getOs = () => {
+     return {
+-        type: (0, node_os_1.type)(),
+-        release: (0, node_os_1.release)(),
++        type: 'Windows_NT',
++        release: '',
+         arch: (0, node_os_1.arch)(),
+-        version: (0, node_os_1.version)(),
+-        platform: exports.devicePlatform,
+-        machine: (0, node_os_1.machine)()
++        version: '',
++        platform: 'win32',
++        machine: ''
+     };
+ };
+ const getRevision = (info) => {
+@@ -142,7 +142,7 @@ const getDeviceInfo = () => {
+         manufacturer: '',
+         model: '',
+         uuid: (0, store_js_1.getUuid)(),
+-        os: exports.devicePlatform,
++        os: 'win32',
+         os_version: '',
+         device_id: (0, store_js_1.getDeviceId)(),
+         clid: 0
