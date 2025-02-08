@@ -1,0 +1,39 @@
+diff --git a/main/lib/createWindow.js b/main/lib/createWindow.js
+index 93ef31d..e2c2e8a 100644
+--- a/main/lib/createWindow.js
++++ b/main/lib/createWindow.js
+@@ -49,7 +49,7 @@ const createWindow = async () => {
+             x: 16,
+             y: 10
+         },
+-        minWidth: 768,
++        minWidth: 350,
+         minHeight: 650,
+         width: 1280,
+         height: 800,
+diff --git a/main/lib/preload.js b/main/lib/preload.js
+index 3e03ba2..f83ee51 100644
+--- a/main/lib/preload.js
++++ b/main/lib/preload.js
+@@ -35,3 +35,20 @@ window.document.addEventListener('DOMContentLoaded', () => {
+         window.document.documentElement.style.backgroundColor = theme === theme_js_1.Theme.Light ? '#FFFFFF' : '#000000';
+     }
+ });
++document.onreadystatechange = (event) => {
++    if (document.readyState === 'complete') {
++        var styles =`\
++@media only screen and (max-width:767.98px) {
++    body {
++        overflow:visible;
++        overflow:initial;
++    }
++}
++::-webkit-scrollbar {
++    display: none;
++}`
++        var styleSheet = document.createElement("style")
++        styleSheet.innerText = styles;
++        document.head.appendChild(styleSheet);
++    }
++}
+\ No newline at end of file
