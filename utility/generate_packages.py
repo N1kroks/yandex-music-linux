@@ -75,4 +75,4 @@ def generate_nix():
 
 
 generate_arch()
-generate_nix()
+# generate_nix()

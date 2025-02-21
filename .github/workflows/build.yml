@@ -80,24 +80,3 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           path: ./dist/release_notes.json
-
-  nix-build:
-    runs-on: ubuntu-latest
-    env:
-      NIXPKGS_ALLOW_UNFREE: 1
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ (inputs.ref || '') }}
-
-      - name: Install nix
-        uses: cachix/install-nix-action@v22
-
-      - uses: DeterminateSystems/magic-nix-cache-action@v2
-
-      - name: Build yandex-music
-        run: nix build --impure .#yandex-music
-      - name: Build yandex-music without flakes binaries
-        run: nix build --impure .#yandex-music-noflakes
-
